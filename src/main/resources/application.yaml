@@ -1,0 +1,29 @@
+spring:
+  h2:
+    console:
+      path: /h2
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: 
+    driverClassName: org.h2.Driver
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+
+server:
+  tomcat:
+    connection-timeout: 300000
+  servlet:
+    session.timeout: 300000
+    context-path: /mvp
+  port: 8080
+      
+springdoc:
+  use-fqn: true
+  packagesToScan: br.com.builders.mvp
+  swagger-ui:
+    doc-expansion: none

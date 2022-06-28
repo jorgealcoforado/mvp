@@ -53,12 +53,6 @@ public class ClientServiceTests {
 			.birth(LocalDate.of(1990, 7, 21))
 			.build();
 	private Optional<Client> oClient = Optional.of(client);
-	
-	private Client clientMapper = Client.builder()
-			.document("22222222222")
-			.name("João da Silva")
-			.birth(LocalDate.of(1990, 7, 21))
-			.build();
 		
 	private ClientResponse clientResponse = ClientResponse.builder()
 			.id(4L)

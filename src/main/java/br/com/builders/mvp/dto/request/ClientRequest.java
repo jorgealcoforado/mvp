@@ -45,7 +45,7 @@ public class ClientRequest implements Serializable {
 				.build();
 	}
 	
-	public Client toDomain(Long id, ClientRequest request) {
+	public static Client toDomain(Long id, ClientRequest request) {
 		return Client.builder()
 				.id(id)
 				.document(request.getDocument())

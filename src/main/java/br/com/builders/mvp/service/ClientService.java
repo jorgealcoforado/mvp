@@ -48,7 +48,7 @@ public class ClientService {
 	
 	public ClientResponse update(Long id, ClientRequest request) {
 		Client client = repository.findById(id).orElseThrow(()-> new NotFoundException("Client was not found."));
-		client = request.toDomain(id,request);
+		client = ClientRequest.toDomain(id,request);
 		return ClientResponse.fromEntity(repository.save(client));
 	}
 

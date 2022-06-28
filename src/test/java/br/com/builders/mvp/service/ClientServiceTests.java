@@ -20,7 +20,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import br.com.builders.mvp.domain.Client;
 import br.com.builders.mvp.dto.request.ClientRequest;
-import br.com.builders.mvp.dto.response.ClientResponse;
 import br.com.builders.mvp.exception.BadRequestException;
 import br.com.builders.mvp.exception.NotFoundException;
 import br.com.builders.mvp.repository.ClientRepository;
@@ -54,13 +53,6 @@ public class ClientServiceTests {
 			.build();
 	private Optional<Client> oClient = Optional.of(client);
 		
-	private ClientResponse clientResponse = ClientResponse.builder()
-			.id(4L)
-			.document("11111111111")
-			.name("João da Silva")
-			.birth(LocalDate.of(1990, 7, 21))
-			.build();
-	
 	@BeforeEach
 	public void setup() {
 		MockitoAnnotations.openMocks(this);

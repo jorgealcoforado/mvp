@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,7 +68,7 @@ public class ClientResource {
 			@Parameter(name = "id", description = "id") @RequestParam(value = "id", defaultValue = "") final Long id
 			,@Parameter(name = "document", description = "document") @RequestParam(value = "document", defaultValue = "") final String document
 			,@Parameter(name = "name", description = "name") @RequestParam(value = "name", defaultValue = "") final String name
-			,@Parameter(name = "birth", description = "birth") @RequestParam(value = "birth", defaultValue = "") final LocalDate birth
+			,@Parameter(name = "birth", description = "birth") @RequestParam(value = "birth", defaultValue = "") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  final LocalDate birth
 			){
 		return ok(service.listByIdOrDocumentOrNameOrBirth(id,document,name,birth));
 	}

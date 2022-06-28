@@ -7,7 +7,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import br.com.builders.mvp.domain.Client;
-import br.com.builders.mvp.dto.response.ClientResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,6 +36,14 @@ public class ClientRequest implements Serializable {
 	@NotNull
 	@Schema(required = true)
 	private LocalDate birth;
+	
+	public static Client toDomain(ClientRequest request) {
+		return Client.builder()
+				.document(request.getDocument())
+				.name(request.getName())
+				.birth(request.getBirth())
+				.build();
+	}
 	
 	public Client toDomain(Long id, ClientRequest request) {
 		return Client.builder()

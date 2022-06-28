@@ -18,8 +18,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import br.com.builders.mvp.domain.Client;
 import br.com.builders.mvp.dto.request.ClientRequest;
 import br.com.builders.mvp.dto.response.ClientResponse;
@@ -35,10 +33,7 @@ public class ClientServiceTests {
 	
 	@Mock
 	private ClientRepository repository;
-	
-	@Mock
-	private ObjectMapper mapper;
-	
+		
 	private ClientRequest request = ClientRequest.builder()
 			.document("11111111111")
 			.name("João da Silva")
@@ -80,9 +75,7 @@ public class ClientServiceTests {
 	@Test
 	public void shouldInsertClientSuccess() {
 		when(repository.existsByDocument(any())).thenReturn(false);
-		when(mapper.convertValue(request, Client.class)).thenReturn(clientMapper);
 		when(repository.save(any(Client.class))).thenReturn(client);
-		when(mapper.convertValue(client, ClientResponse.class)).thenReturn(clientResponse);
 		assertThat(client.getId(), is(service.insert(request).getId()));
 	}
 	
